@@ -27,30 +27,34 @@
         </section>
 
         <section id="products">
-            <h2>Our Bread Selection</h2>
-            <div class="bread-container">
-                <div class="bread-item">
-                    <img src="baguette.jpg" alt="Baguette">
-                    <h3>Baguette</h3>
-                    <p>$3.50</p>
-                </div>
-                <div class="bread-item">
-                    <img src="croissant.jpg" alt="Croissant">
-                    <h3>Croissant</h3>
-                    <p>$2.00</p>
-                </div>
-                <div class="bread-item">
-                    <img src="sourdough.jpg" alt="Sourdough">
-                    <h3>Sourdough</h3>
-                    <p>$5.00</p>
-                </div>
-                <div class="bread-item">
-                    <img src="wholewheat.jpg" alt="Whole Wheat">
-                    <h3>Whole Wheat Bread</h3>
-                    <p>$4.00</p>
-                </div>
-            </div>
-        </section>
+    <h2>Our Bread Selection</h2>
+    
+    <!-- Search Bar -->
+    <input type="text" id="search-bar" placeholder="Search for bread..." onkeyup="searchBread()">
+
+    <div class="bread-container">
+        <div class="bread-item" data-name="baguette">
+            <img src="baguette.jpg" alt="Baguette">
+            <h3>Baguette</h3>
+            <p>$3.50</p>
+        </div>
+        <div class="bread-item" data-name="croissant">
+            <img src="croissant.jpg" alt="Croissant">
+            <h3>Croissant</h3>
+            <p>$2.00</p>
+        </div>
+        <div class="bread-item" data-name="sourdough">
+            <img src="sourdough.jpg" alt="Sourdough">
+            <h3>Sourdough</h3>
+            <p>$5.00</p>
+        </div>
+        <div class="bread-item" data-name="whole wheat">
+            <img src="wholewheat.jpg" alt="Whole Wheat Bread">
+            <h3>Whole Wheat Bread</h3>
+            <p>$4.00</p>
+        </div>
+    </div>
+</section>
 
         <section id="contact">
             <h2>Contact Us</h2>
@@ -63,6 +67,20 @@
     <footer>
         &copy; 2025 Ronaldo Bakery. All rights reserved.
     </footer>
+<script>
+    function searchBread() {
+        let input = document.getElementById("search-bar").value.toLowerCase();
+        let items = document.querySelectorAll(".bread-item");
 
+        items.forEach(item => {
+            let breadName = item.getAttribute("data-name");
+            if (breadName.includes(input)) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    }
+</script>
 </body>
 </html>
